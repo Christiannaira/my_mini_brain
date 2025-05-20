@@ -43,4 +43,9 @@ public class UserStartActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void handleUser(){
+
+    }
+
 }
