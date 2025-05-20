@@ -10,8 +10,56 @@
     >
 
     <TextView
+        android:layout_marginTop="140dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="this is fun" />
+        android:text="@string/user_start_headline"
+        android:textSize="25sp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:text="@string/user_start_description"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_start_question"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            app:cornerRadius="6dp"
+            android:text="@string/user_start_sellerBtn"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            app:cornerRadius="6dp"
+            android:text="@string/user_start_buyerBtn"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>
