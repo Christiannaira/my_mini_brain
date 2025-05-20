@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.MyMiniBrain" parent="Base.Theme.MyMiniBrain" />
+
+
 </resources>

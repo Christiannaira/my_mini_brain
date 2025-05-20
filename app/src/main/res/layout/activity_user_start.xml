@@ -7,25 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".UserStartActivity"
     android:orientation="vertical"
+    android:padding="20dp"
     >
 
     <TextView
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_start_headline"
         android:textSize="25sp"
         android:gravity="center"
+        android:fontFamily="@font/poppins_medium"
         />
 
     <TextView
         android:layout_marginTop="40dp"
-        android:layout_width="210dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_start_description"
         android:textSize="16sp"
         android:gravity="center"
         android:layout_gravity="center"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="#222222"
         />
 
     <TextView
@@ -36,10 +40,12 @@
         android:textSize="16sp"
         android:gravity="center"
         android:layout_gravity="center"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="#444444"
         />
 
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -47,17 +53,26 @@
         >
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:id="@+id/sellBtn"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
             app:cornerRadius="6dp"
             android:text="@string/user_start_sellerBtn"
+            android:backgroundTint="@color/primary"
+            android:textSize="18sp"
             />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:id="@+id/buyBtn"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
             app:cornerRadius="6dp"
             android:text="@string/user_start_buyerBtn"
+            android:backgroundTint="#ffffff"
+            android:textColor="@color/primary"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="1dp"
+            android:textSize="18sp"
             />
 
     </LinearLayout>

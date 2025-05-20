@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">myMiniBrain</string>
 
-    <string name="user_start_headline">Learn Anything Anywhere</string>
+    <string name="user_start_headline">Learn Anything.\nAnywhere</string>
     <string name="user_start_description">Build your foundation and start learning!</string>
     <string name="user_start_question">What will you do?</string>
 
