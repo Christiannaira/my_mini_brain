@@ -1,5 +1,6 @@
 package com.example.myminibrain;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -26,14 +27,18 @@ public class UserStartActivity extends AppCompatActivity {
         binding.sellBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(UserStartActivity.this, "sell", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserStartActivity.this, RegisterActivity.class);
+                intent.putExtra("type", "sell");
+                startActivity(intent);
             }
         });
 
         binding.buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(UserStartActivity.this, "buy", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserStartActivity.this, RegisterActivity.class);
+                intent.putExtra("type", "buy");
+                startActivity(intent);
             }
         });
 

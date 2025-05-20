@@ -1,6 +1,9 @@
 package com.example.myminibrain;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +24,21 @@ public class RegisterActivity extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+
+        String userType = getIntent().getStringExtra("type");
+
+        Toast.makeText(this, userType, Toast.LENGTH_SHORT).show();
+
+        binding.returnUserStart.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                
+                Intent intent = new Intent(RegisterActivity.this, UserStartActivity.class);
+                startActivity(intent);
+            }
+
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
