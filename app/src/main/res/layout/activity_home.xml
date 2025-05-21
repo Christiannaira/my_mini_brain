@@ -5,31 +5,44 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    >
 
     <LinearLayout
-        android:id="@+id/homeNav"
+        android:id="@+id/homeContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
         >
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/homeNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="myminibrain"
-            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="myminibrain"
+                android:gravity="center_horizontal"
+                />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/homeView"
+            android:layout_below="@+id/homeNav"
             />
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/homeView"
-        android:layout_below="@+id/homeNav"
-        />
+
 
 
 

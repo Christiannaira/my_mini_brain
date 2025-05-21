@@ -31,6 +31,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.courseTitleView.setText(items.get(position).getCourseTitle());
         holder.courseDesView.setText(items.get(position).getCourseDes());
 
+        String title = items.get(position).getCourseTitle();
+        String des = items.get(position).getCourseDes();
+
+        holder.bindData(title, des);
+
     }
 
     @Override
