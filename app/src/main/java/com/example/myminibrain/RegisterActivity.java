@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 public class RegisterActivity extends AppCompatActivity {
 
     ActivityRegisterBinding binding;
+    DatabaseHelper my_database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,11 @@ public class RegisterActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
 
-        String userType = getIntent().getStringExtra("type");
+
 
 //        Toast.makeText(this, userType, Toast.LENGTH_SHORT).show();
+
+        my_database = new DatabaseHelper(this);
 
         binding.returnUserStart.setOnClickListener(new View.OnClickListener() {
 
@@ -50,6 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String registerPassword = binding.registerPassword.getText().toString();
                 String registerConfirm = binding.registerConfirm.getText().toString();
 
+                String userType = getIntent().getStringExtra("type");
+
                 if (registerName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
                 } else {
@@ -62,6 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
 //                        binding.fullname.setText(registerName);
 //                        binding.email.setText(registerEmail);
 //                        binding.password.setText(registerPassword);
+
+                        registerAccount(registerName, registerEmail, registerPassword, userType);
 
                     }
 
@@ -85,5 +92,18 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void registerAccount(String username, String email, String password, String type) {
+
+        boolean registerAccount = my_database.insertUser(username, email, password, type);
+
+        if (registerAccount) {
+            Toast.makeText(this, "Account Registered Successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
