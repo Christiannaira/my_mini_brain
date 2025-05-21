@@ -33,11 +33,21 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                
+
                 Intent intent = new Intent(RegisterActivity.this, UserStartActivity.class);
                 startActivity(intent);
             }
 
+        });
+
+        binding.signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String registerName = binding.registerName.getText().toString();
+
+                Toast.makeText(RegisterActivity.this, registerName, Toast.LENGTH_SHORT).show();
+
+            }
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

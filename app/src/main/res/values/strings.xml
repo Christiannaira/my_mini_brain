@@ -8,4 +8,14 @@
     <string name="user_start_sellerBtn">Sell Course</string>
     <string name="user_start_buyerBtn">Buy Course</string>
 
+    <string name="signup_label">Sign Up</string>
+    <string name="login_label">Log in</string>
+    <string name="signup_description">Welcome Sellers\nPlease login to continue</string>
+    <string name="register_name">Full Name</string>
+    <string name="register_email">Email Address</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm">Confirm</string>
+
+
+
 </resources>
