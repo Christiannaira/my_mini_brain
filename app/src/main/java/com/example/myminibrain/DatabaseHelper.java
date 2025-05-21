@@ -2,6 +2,7 @@ package com.example.myminibrain;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -52,6 +53,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         } else {
             return true;
+        }
+
+    }
+
+    public boolean checkAccount(String email, String password) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + usertable_name + " WHERE email = ? AND password = ?", new String[] {email, password});
+
+        if (cursor.getCount() > 0) {
+            return true;
+        } else {
+            return false;
         }
 
     }

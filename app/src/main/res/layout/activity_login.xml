@@ -54,7 +54,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/register_email"
+                android:id="@+id/login_email"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/register_email"
@@ -64,7 +64,7 @@
                 />
 
             <EditText
-                android:id="@+id/register_password"
+                android:id="@+id/login_password"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/register_password"
@@ -74,10 +74,10 @@
                 />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signupBtn"
+                android:id="@+id/loginBtn"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_label"
+                android:text="@string/login_label"
                 android:backgroundTint="@color/primary"
                 app:cornerRadius="6dp"
                 android:layout_gravity="center"

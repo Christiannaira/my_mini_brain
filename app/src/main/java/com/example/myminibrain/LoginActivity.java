@@ -17,12 +17,16 @@ public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
 
+    DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+
+        databaseHelper = new DatabaseHelper(this);
 
         binding.returnUserStart.setOnClickListener(new View.OnClickListener() {
 
@@ -40,10 +44,41 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
         );
 
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String loginEmail = binding.loginEmail.getText().toString();
+                String loginPassword = binding.loginPassword.getText().toString();
+
+                checkUser(loginEmail, loginPassword);
+
+            }
+
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
+
+    public void checkUser(String email, String password){
+
+        boolean checkAccount = databaseHelper.checkAccount(email, password);
+
+        if (checkAccount) {
+            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+
+        } else {
+            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
