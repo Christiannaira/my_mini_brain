@@ -58,6 +58,11 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(RegisterActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+
+//                        binding.fullname.setText(registerName);
+//                        binding.email.setText(registerEmail);
+//                        binding.password.setText(registerPassword);
+
                     }
 
                 }
