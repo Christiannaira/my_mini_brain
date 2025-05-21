@@ -84,7 +84,8 @@
                 />
 
             <TextView
-                android:id="@+id/signupToLogIn"
+                android:layout_marginTop="10dp"
+                android:id="@+id/loginToSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_to_register"

@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         String userType = getIntent().getStringExtra("type");
 
-        Toast.makeText(this, userType, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, userType, Toast.LENGTH_SHORT).show();
 
         binding.returnUserStart.setOnClickListener(new View.OnClickListener() {
 
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String registerConfirm = binding.registerConfirm.getText().toString();
 
                 if (registerName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
                 } else {
 
 
