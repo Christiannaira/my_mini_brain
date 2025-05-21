@@ -16,6 +16,9 @@
     <string name="register_password">Password</string>
     <string name="register_confirm">Confirm</string>
 
+    <string name="register_to_login">Already have an account?</string>
+    <string name="login_to_register">Create an account</string>
+
 
 
 </resources>

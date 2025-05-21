@@ -14,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.myminibrain.databinding.ActivityRegisterBinding;
 import com.example.myminibrain.databinding.ActivityUserStartBinding;
 
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
 
     ActivityRegisterBinding binding;
@@ -44,10 +46,28 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String registerName = binding.registerName.getText().toString();
+                String registerEmail = binding.registerEmail.getText().toString();
+                String registerPassword = binding.registerPassword.getText().toString();
+                String registerConfirm = binding.registerConfirm.getText().toString();
 
-                Toast.makeText(RegisterActivity.this, registerName, Toast.LENGTH_SHORT).show();
+                if (registerName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
+                } else {
+
+
+                }
 
             }
+        });
+
+        binding.signupToLogIn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
