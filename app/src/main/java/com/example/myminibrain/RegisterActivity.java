@@ -51,9 +51,14 @@ public class RegisterActivity extends AppCompatActivity {
                 String registerConfirm = binding.registerConfirm.getText().toString();
 
                 if (registerName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
-//                    Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    if (!registerPassword.equals(registerConfirm)) {
+                        Toast.makeText(RegisterActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
 
