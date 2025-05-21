@@ -64,10 +64,6 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(RegisterActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
 
-//                        binding.fullname.setText(registerName);
-//                        binding.email.setText(registerEmail);
-//                        binding.password.setText(registerPassword);
-
                         registerAccount(registerName, registerEmail, registerPassword, userType);
 
                     }

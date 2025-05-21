@@ -1,6 +1,8 @@
 package com.example.myminibrain;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +21,22 @@ public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
 
+    String activeUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+
+        // stored the email who's logged in
+        Intent getActiveUser = getIntent();
+        activeUser = getActiveUser.getStringExtra("user_loggedIn");
+
+        binding.userProfileName.setText(activeUser);
+
+        Toast.makeText(this, activeUser, Toast.LENGTH_SHORT).show();
 
         List<Item> items = new ArrayList<>();
 

@@ -7,6 +7,7 @@
     android:layout_margin="20dp"
     app:cardCornerRadius="6dp"
     android:elevation="10dp"
+    android:backgroundTint="@color/primary"
     >
 
     <LinearLayout
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Title"
             android:textSize="28sp"
+            android:textColor="@color/white"
             />
 
         <TextView
@@ -30,14 +32,16 @@
             android:layout_height="wrap_content"
             android:text="Description"
             android:textSize="18sp"
-            android:textColor="#888888"
+            android:textColor="#dddddd"
             />
 
         <Button
             android:id="@+id/courseItemBtn"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="buy course"/>
+            android:text="buy course"
+            android:backgroundTint="@color/white"
+            />
 
     </LinearLayout>
 
