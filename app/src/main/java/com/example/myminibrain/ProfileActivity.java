@@ -90,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        binding.activeProfile.setText(displayActiveUser);
+//        binding.activeProfile.setText(displayActiveUser);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

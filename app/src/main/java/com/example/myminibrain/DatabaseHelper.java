@@ -23,13 +23,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, database_name, null, 2);
+        super(context, database_name, null, 3);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + usertable_name + "(user_id INTEGER PRIMARY KEY AUTOINCREMENT, fullname VARCHAR(255), username VARCHAR(255), email VARCHAR(255), password VARCHAR(255), type VARCHAR(255))");
-        db.execSQL("CREATE TABLE " + coursetable_name + "(course_id INTEGER PRIMARY KEY AUTOINCREMENT, course_name VARCHAR(255), course_category VARCHAR(255), courseSeller_id INTEGER)");
+        db.execSQL("CREATE TABLE " + coursetable_name + "(course_id INTEGER PRIMARY KEY AUTOINCREMENT, course_name VARCHAR(255), course_category VARCHAR(255), courseSeller_id INTEGER, course_selected_id INTEGER)");
         db.execSQL("CREATE TABLE " + inventorytable_name + "(inventory_id INTEGER PRIMARY KEY AUTOINCREMENT, courseSelected_id INTEGER, courseSeller_id INTEGER, course_category VARCHAR(255))");
         db.execSQL("CREATE TABLE " + transactiontable_name + "(transaction_id INTEGER PRIMARY KEY AUTOINCREMENT, transaction_reciept VARCHAR(255), transaction_buyerId INTEGER, transaction_sellerId INTEGER)");
 
@@ -69,9 +69,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
 
+    }
+
+    public boolean insertCourse(String courseName, String courseCategory, int courseSellerId, int courseSelectedId){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + coursetable_name + " WHERE course_selected_id = ?", new String[] {String.valueOf(courseSelectedId)});
+
+        if (cursor.getCount() == 0) {
+            cv.put("course_name", courseName);
+            cv.put("course_category", courseCategory);
+            cv.put("courseSeller_id", courseSellerId);
+            cv.put("course_selected_id", courseSelectedId);
+            long result = db.insert(coursetable_name, null, cv);
+
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+
+            return false;
+        }
 
 
     }
+
+
 
     public boolean checkAccount(String email, String password) {
 
@@ -134,7 +161,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    // check the user
+
 
 
 

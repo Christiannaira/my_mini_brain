@@ -21,11 +21,21 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
     private String currentCourseDes;
 
     private int currentCourseId;
-    public MyViewHolder(@NonNull View itemView) {
+
+    DatabaseHelper databaseHelper;
+
+    private Context context;
+
+    public MyViewHolder(@NonNull View itemView, Context context) {
         super(itemView);
+        this.context = context;
+        databaseHelper = new DatabaseHelper(context);
+
         courseTitleView = itemView.findViewById(R.id.courseTitleView);
         courseDesView = itemView.findViewById(R.id.courseDesView);
         courseItemBtn = itemView.findViewById(R.id.courseItemBtn);
+
+
 
         courseItemBtn.setOnClickListener(this);
         itemView.setOnClickListener(this);
@@ -35,12 +45,22 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
     @Override
     public void onClick(View v) {
 
+
         Context context = v.getContext();
 
         if (v.getId() == R.id.courseItemBtn) {
 
             String msg = currentCourseTitle;
             Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+
+            boolean addToCartCourse = databaseHelper.insertCourse(currentCourseTitle, "Technology", 0, currentCourseId);
+
+            if (addToCartCourse) {
+                Toast.makeText(context, "Course Added Successfully", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Course Was Not Added", Toast.LENGTH_SHORT).show();
+            }
+
 
         } else {
 

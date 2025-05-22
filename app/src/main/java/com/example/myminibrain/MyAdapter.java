@@ -2,6 +2,7 @@ package com.example.myminibrain;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view, parent, false));
+        View view = LayoutInflater.from(context).inflate(R.layout.item_view, parent, false);
+        return new MyViewHolder(view, context);
     }
 
     @Override
