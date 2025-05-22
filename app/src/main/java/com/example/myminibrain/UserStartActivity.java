@@ -29,7 +29,9 @@ public class UserStartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserStartActivity.this, RegisterActivity.class);
                 intent.putExtra("type", "sell");
+
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -39,7 +41,9 @@ public class UserStartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserStartActivity.this, RegisterActivity.class);
                 intent.putExtra("type", "buy");
+
                 startActivity(intent);
+                finish();
             }
         });
 

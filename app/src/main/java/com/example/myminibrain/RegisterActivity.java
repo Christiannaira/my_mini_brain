@@ -40,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(RegisterActivity.this, UserStartActivity.class);
+
                 startActivity(intent);
                 finish();
             }
@@ -80,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+
                 startActivity(intent);
                 finish();
             }
