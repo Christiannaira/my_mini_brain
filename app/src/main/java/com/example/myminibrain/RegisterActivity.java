@@ -49,14 +49,15 @@ public class RegisterActivity extends AppCompatActivity {
         binding.signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String registerName = binding.registerName.getText().toString();
+                String registerFullName = binding.registerName.getText().toString();
+                String registerUserName = binding.registerUsername.getText().toString();
                 String registerEmail = binding.registerEmail.getText().toString();
                 String registerPassword = binding.registerPassword.getText().toString();
                 String registerConfirm = binding.registerConfirm.getText().toString();
 
                 String userType = getIntent().getStringExtra("type");
 
-                if (registerName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
+                if (registerFullName.isEmpty() || registerUserName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Field must not be empty", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -65,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "Logged In", Toast.LENGTH_SHORT).show();
 
-                        registerAccount(registerName, registerEmail, registerPassword, userType);
+                        registerAccount(registerUserName, registerEmail, registerPassword, userType, registerFullName);
 
                     }
 
@@ -92,9 +93,9 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    public void registerAccount(String username, String email, String password, String type) {
+    public void registerAccount(String username, String email, String password, String type, String fullname) {
 
-        boolean registerAccount = my_database.insertUser(username, email, password, type);
+        boolean registerAccount = my_database.insertUser(username, email, password, type, fullname);
 
         if (registerAccount) {
             Toast.makeText(getApplicationContext(), "Account Registered Successfully", Toast.LENGTH_SHORT).show();

@@ -22,12 +22,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, database_name, null, 1);
+        super(context, database_name, null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + usertable_name + "(user_id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(255), email VARCHAR(255), password VARCHAR(255), type VARCHAR(255))");
+        db.execSQL("CREATE TABLE " + usertable_name + "(user_id INTEGER PRIMARY KEY AUTOINCREMENT, fullname VARCHAR(255), username VARCHAR(255), email VARCHAR(255), password VARCHAR(255), type VARCHAR(255))");
         db.execSQL("CREATE TABLE " + coursetable_name + "(course_id INTEGER PRIMARY KEY AUTOINCREMENT, course_name VARCHAR(255), course_category VARCHAR(255), courseSeller_id INTEGER)");
         db.execSQL("CREATE TABLE " + inventorytable_name + "(inventory_id INTEGER PRIMARY KEY AUTOINCREMENT, courseSelected_id INTEGER, courseSeller_id INTEGER, course_category VARCHAR(255))");
         db.execSQL("CREATE TABLE " + transactiontable_name + "(transaction_id INTEGER PRIMARY KEY AUTOINCREMENT, transaction_reciept VARCHAR(255), transaction_buyerId INTEGER, transaction_sellerId INTEGER)");
@@ -40,13 +40,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + coursetable_name);
         db.execSQL("DROP TABLE IF EXISTS " + inventorytable_name);
         db.execSQL("DROP TABLE IF EXISTS " + transactiontable_name);
+        onCreate(db);
     }
 
-    public boolean insertUser(String username, String email, String password, String type) {
+    public boolean insertUser(String username, String email, String password, String type, String fullname) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
+        cv.put("fullname", fullname);
         cv.put("username", username);
         cv.put("email", email);
         cv.put("password", password);
