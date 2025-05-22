@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
             displayActiveUser.append("No User Found");
         } else {
             for (String[] user: activeUserData) {
-                displayActiveUser.append("Username: ").append(user[0]).append("\nEmail: ").append(user[1]);
+                displayActiveUser.append("Username: ").append(user[0]).append("\nEmail: ").append(user[1]).append("\nFull Name: ").append(user[2]);
             }
         }
 

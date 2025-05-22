@@ -94,10 +94,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + usertable_name + " WHERE email = ?", new String[] {activeEmail});
 
         if (cursor.moveToFirst()){
+            String fullname = cursor.getString(cursor.getColumnIndexOrThrow("fullname"));
             String username = cursor.getString(cursor.getColumnIndexOrThrow("username"));
             String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
 
-            String[] row = {username, email};
+            String[] row = {username, email, fullname};
 
             userData.add(row);
 
