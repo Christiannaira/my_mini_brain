@@ -50,6 +50,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
             intent.putExtra("courseDes", currentCourseDes);
             intent.putExtra("courseId", currentCourseId);
 
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
 

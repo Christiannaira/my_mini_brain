@@ -2,6 +2,7 @@ package com.example.myminibrain;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,9 +32,17 @@ public class CourseActivity extends AppCompatActivity {
         String courseDes = intent.getStringExtra("courseDes");
         int courseId = intent.getIntExtra("courseId", 0);
 
-        binding.title.setText(courseTitle);
-        binding.description.setText(courseDes);
-        binding.courseId.setText(String.valueOf(courseId));
+        Log.d("CourseActivity", "Title: " + courseTitle + ", Des: " + courseDes + ", ID: " + courseId);
+
+
+        if (courseTitle != null && courseDes != null && courseId != 0) {
+            binding.title.setText(courseTitle);
+            binding.description.setText(courseDes);
+            binding.courseId.setText(String.valueOf(courseId));
+        } else {
+            Toast.makeText(this, "Missing course data", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
         binding.returnHome.setOnClickListener(v ->
                 {
