@@ -35,13 +35,17 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, UserStartActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
 
 
         binding.loginToSignup.setOnClickListener(v ->
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class))
+                {
+                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                    finish();
+                }
         );
 
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -70,14 +74,14 @@ public class LoginActivity extends AppCompatActivity {
         boolean checkAccount = databaseHelper.checkAccount(email, password);
 
         if (checkAccount) {
-            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             intent.putExtra("user_loggedIn", email);
             startActivity(intent);
 
         } else {
-            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
         }
 
     }

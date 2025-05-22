@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(RegisterActivity.this, UserStartActivity.class);
                 startActivity(intent);
+                finish();
             }
 
         });
@@ -56,13 +57,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String userType = getIntent().getStringExtra("type");
 
                 if (registerName.isEmpty() || registerEmail.isEmpty() || registerPassword.isEmpty() || registerConfirm.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Field must not be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Field must not be empty", Toast.LENGTH_SHORT).show();
                 } else {
 
                     if (!registerPassword.equals(registerConfirm)) {
-                        Toast.makeText(RegisterActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(RegisterActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Logged In", Toast.LENGTH_SHORT).show();
 
                         registerAccount(registerName, registerEmail, registerPassword, userType);
 
@@ -79,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
 
         });
@@ -95,9 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
         boolean registerAccount = my_database.insertUser(username, email, password, type);
 
         if (registerAccount) {
-            Toast.makeText(this, "Account Registered Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Account Registered Successfully", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Registration Failed", Toast.LENGTH_SHORT).show();
         }
 
 

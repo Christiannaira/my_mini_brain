@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
 
         binding.userProfileName.setText(activeUser);
 
-        Toast.makeText(this, activeUser, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), activeUser, Toast.LENGTH_SHORT).show();
 
         List<Item> items = new ArrayList<>();
 

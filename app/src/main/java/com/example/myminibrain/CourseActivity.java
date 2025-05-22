@@ -2,6 +2,7 @@ package com.example.myminibrain;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -34,7 +35,13 @@ public class CourseActivity extends AppCompatActivity {
         binding.description.setText(courseDes);
         binding.courseId.setText(String.valueOf(courseId));
 
+        binding.returnHome.setOnClickListener(v ->
+                {
+                    startActivity(new Intent(CourseActivity.this, HomeActivity.class));
+                    finish();
+                }
 
+        );
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
