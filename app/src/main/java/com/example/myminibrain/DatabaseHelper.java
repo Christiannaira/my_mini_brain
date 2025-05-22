@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -48,18 +49,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put("fullname", fullname);
-        cv.put("username", username);
-        cv.put("email", email);
-        cv.put("password", password);
-        cv.put("type", type);
-        long result = db.insert(usertable_name, null, cv);
+        Cursor cursor = db.rawQuery("SELECT email FROM " + usertable_name + " WHERE email = ?", new String[] {email});
 
-        if (result == -1) {
-            return false;
+        if (cursor.getCount() == 0) {
+            cv.put("fullname", fullname);
+            cv.put("username", username);
+            cv.put("email", email);
+            cv.put("password", password);
+            cv.put("type", type);
+            long result = db.insert(usertable_name, null, cv);
+
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
         } else {
-            return true;
+
+            return false;
         }
+
+
 
     }
 
