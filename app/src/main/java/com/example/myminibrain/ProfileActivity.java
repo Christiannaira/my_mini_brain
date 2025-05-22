@@ -3,6 +3,7 @@ package com.example.myminibrain;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -54,13 +55,40 @@ public class ProfileActivity extends AppCompatActivity {
         ArrayList<String[]> activeUserData = databaseHelper.getActiveUser(activeUser);
         StringBuilder displayActiveUser = new StringBuilder();
 
+        String displayCurrentFullName;
+        String displayCurrentUsername;
+        String displayCurrentEmail;
+
         if (activeUserData.isEmpty()) {
             displayActiveUser.append("No User Found");
         } else {
             for (String[] user: activeUserData) {
-                displayActiveUser.append("Username: ").append(user[0]).append("\nEmail: ").append(user[1]).append("\nFull Name: ").append(user[2]);
+
+                displayCurrentUsername = "Username: " + user[0];
+                displayCurrentEmail = "Full Name: " + user[1];
+                displayCurrentFullName = "Email: " + user[2];
+
+//                displayActiveUser.append("Username: ").append(user[0]).append("\nEmail: ").append(user[1]).append("\nFull Name: ").append(user[2]);
+
+                binding.userFullName.setText(displayCurrentFullName);
+                binding.userUserName.setText(displayCurrentUsername);
+                binding.userEmail.setText(displayCurrentEmail);
+
             }
         }
+
+
+        binding.returnHome.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+
+            }
+        });
 
         binding.activeProfile.setText(displayActiveUser);
 
@@ -69,5 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
     }
 }

@@ -10,26 +10,86 @@
     android:padding="20dp"
     >
 
+    <ImageView
+        android:id="@+id/returnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_left"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"/>
+
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="20dp"
+    android:elevation="20dp"
+    app:cardCornerRadius="20dp"
     >
 
-    <TextView
-        android:layout_margin="10dp"
-        android:id="@+id/profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="profile"/>
+<!--    <TextView-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:id="@+id/profile"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="profile"/>-->
 
-    <TextView
-        android:id="@+id/activeProfile"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Active"
-        android:layout_marginTop="300dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/userprofile"
+            android:background="@drawable/rounded_image"
+            />
+
+
+       <LinearLayout
+
+           android:layout_marginTop="13dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           >
+
+<!--           <TextView-->
+<!--               android:id="@+id/activeProfile"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:text="Active"-->
+
+<!--               />-->
+
+           <TextView
+               android:id="@+id/userFullName"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="User Full Name"/>
+
+           <TextView
+               android:id="@+id/userUserName"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="User Name"/>
+
+           <TextView
+               android:id="@+id/userEmail"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="User Full Email"/>
+
+       </LinearLayout>
+
+
+
+    </LinearLayout>
+
 
 
 </androidx.cardview.widget.CardView>
