@@ -30,6 +30,7 @@ public class UserStartActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserStartActivity.this, RegisterActivity.class);
                 intent.putExtra("type", "sell");
                 startActivity(intent);
+
             }
         });
 

@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, UserStartActivity.class);
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginToSignup.setOnClickListener(v ->
                 {
                     startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                    finish();
+
                 }
         );
 
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             intent.putExtra("user_loggedIn", email);
             startActivity(intent);
-            finish();
+
 
         } else {
             Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();

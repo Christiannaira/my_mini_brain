@@ -33,7 +33,12 @@ public class HomeActivity extends AppCompatActivity {
 
         // stored the email who's logged in
         Intent getActiveUser = getIntent();
-        activeUser = getActiveUser.getStringExtra("user_loggedIn");
+        if (getActiveUser != null) {
+            activeUser = getActiveUser.getStringExtra("user_loggedIn");
+        } else {
+            activeUser = "User";
+        }
+
 
         binding.userProfileName.setText(activeUser);
 
@@ -50,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         items.add(new Item("React Testing Mastery: From Basics to Advanced Techniques", "A comprehensive guide to React testing packed with practical tips, real-world exercises, and best practices"));
 
         binding.homeView.setLayoutManager(new LinearLayoutManager(this));
-        binding.homeView.setAdapter(new MyAdapter(getApplicationContext(), items));
+        binding.homeView.setAdapter(new MyAdapter(HomeActivity.this, items));
 
         binding.userProfileName.setOnClickListener(new View.OnClickListener() {
             @Override
