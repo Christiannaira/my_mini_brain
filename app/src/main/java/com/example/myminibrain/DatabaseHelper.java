@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String database_name = "mini_brain.db";
@@ -67,6 +71,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             return false;
         }
+
+    }
+
+    public List<String[]> getAllUserData() {
+
+        List<String[]> dataList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "  + usertable_name, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int user_id = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
+                String username = cursor.getString(cursor.getColumnIndexOrThrow("username"));
+                String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+
+                String[] row = {String.valueOf(user_id), username, email};
+
+                dataList.add(row);
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        return dataList;
 
     }
 
