@@ -1,6 +1,7 @@
 package com.example.myminibrain;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
 
     private String currentCourseTitle;
     private String currentCourseDes;
+
+    private int currentCourseId;
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
         courseTitleView = itemView.findViewById(R.id.courseTitleView);
@@ -41,14 +44,22 @@ public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClic
 
         } else {
 
-            Toast.makeText(context, "Item is clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Item is clicked " + currentCourseId, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, CourseActivity.class);
+            intent.putExtra("courseTitle", currentCourseTitle);
+            intent.putExtra("courseDes", currentCourseDes);
+            intent.putExtra("courseId", currentCourseId);
+
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
 
         }
 
     }
 
-    public void bindData(String courseTitle, String courseDes) {
+    public void bindData(String courseTitle, String courseDes, int courseId) {
         currentCourseTitle = courseTitle;
         currentCourseDes = courseDes;
+        currentCourseId = courseId;
     }
 }

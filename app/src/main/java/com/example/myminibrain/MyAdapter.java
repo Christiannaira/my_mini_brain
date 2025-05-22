@@ -34,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         String title = items.get(position).getCourseTitle();
         String des = items.get(position).getCourseDes();
 
-        holder.bindData(title, des);
+        holder.bindData(title, des, position);
 
     }
 
