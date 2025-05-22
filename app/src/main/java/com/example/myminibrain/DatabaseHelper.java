@@ -95,7 +95,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
 
-
     }
 
 
@@ -157,6 +156,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         cursor.close();
         return dataList;
+
+    }
+
+    public List<String[]> getAllCourse(){
+
+        List<String[]> getAllCourseData = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "  + coursetable_name, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String courseName = cursor.getString(cursor.getColumnIndexOrThrow("course_name"));
+                int courseSellerId = cursor.getInt(cursor.getColumnIndexOrThrow("courseSeller_id"));
+                int course_selected_id = cursor.getInt(cursor.getColumnIndexOrThrow("course_selected_id"));
+
+                    String[] row = {courseName, String.valueOf(course_selected_id), String.valueOf(courseSellerId)};
+
+                getAllCourseData.add(row);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return getAllCourseData;
 
     }
 
