@@ -7,12 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity"
     android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
     >
 
     <TextView
+        android:layout_margin="10dp"
         android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="profile"/>
+
+    <TextView
+        android:id="@+id/activeProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Active"
+        android:layout_marginTop="300dp"
+        />
+
+
+</androidx.cardview.widget.CardView>
 
 </LinearLayout>

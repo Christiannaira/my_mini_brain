@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             intent.putExtra("user_loggedIn", email);
             startActivity(intent);
+            finish();
 
         } else {
             Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();

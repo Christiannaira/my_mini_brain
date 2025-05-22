@@ -74,6 +74,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    // display the user
+    public ArrayList<String[]> getActiveUser(String activeEmail){
+
+        ArrayList<String[]> userData = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + usertable_name + " WHERE email = ?", new String[] {activeEmail});
+
+        if (cursor.moveToFirst()){
+            String username = cursor.getString(cursor.getColumnIndexOrThrow("username"));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+
+            String[] row = {username, email};
+
+            userData.add(row);
+
+        } while (cursor.moveToNext());
+
+        cursor.close();
+        return userData;
+    }
+
+
     public List<String[]> getAllUserData() {
 
         List<String[]> dataList = new ArrayList<>();
@@ -97,6 +119,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return dataList;
 
     }
+
+
+    // check the user
+
+
 
 
 

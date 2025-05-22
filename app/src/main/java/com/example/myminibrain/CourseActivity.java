@@ -32,8 +32,6 @@ public class CourseActivity extends AppCompatActivity {
         String courseDes = intent.getStringExtra("courseDes");
         int courseId = intent.getIntExtra("courseId", 0);
 
-        Log.d("CourseActivity", "Title: " + courseTitle + ", Des: " + courseDes + ", ID: " + courseId);
-
 
         if (courseTitle != null && courseDes != null && courseId != 0) {
             binding.title.setText(courseTitle);

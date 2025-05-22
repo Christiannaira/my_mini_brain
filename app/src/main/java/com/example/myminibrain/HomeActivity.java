@@ -52,13 +52,15 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeView.setLayoutManager(new LinearLayoutManager(this));
         binding.homeView.setAdapter(new MyAdapter(getApplicationContext(), items));
 
-        binding.userProfileName.setOnClickListener(v ->
-                {
-                    startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-                    finish();
-                }
-
-        );
+        binding.userProfileName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                intent.putExtra("user_loggedIn", activeUser);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
